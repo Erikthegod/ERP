@@ -29,8 +29,11 @@ public class JPanelInicioSesion extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        fefe = new javax.swing.JLabel();
 
         jLabel1.setText("Prueba GitHub");
+
+        fefe.setText("cf");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -39,19 +42,27 @@ public class JPanelInicioSesion extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(jLabel1)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addGap(95, 95, 95)
+                .addComponent(fefe)
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jLabel1)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(fefe)))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fefe;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
