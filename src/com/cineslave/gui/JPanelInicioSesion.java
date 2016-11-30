@@ -31,7 +31,7 @@ public class JPanelInicioSesion extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         fefe = new javax.swing.JLabel();
 
-        jLabel1.setText("Prueba GitHub");
+        jLabel1.setText("Prueba Cambio");
 
         fefe.setText("cf");
 
@@ -44,7 +44,7 @@ public class JPanelInicioSesion extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(95, 95, 95)
                 .addComponent(fefe)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
