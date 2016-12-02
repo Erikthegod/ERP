@@ -34,7 +34,11 @@ public class JPanelInicioSesion extends javax.swing.JPanel {
         jtfPassword = new javax.swing.JTextField();
         jbIniciarSesion = new javax.swing.JButton();
 
+<<<<<<< HEAD
         jLabel1.setText("Usuario");
+=======
+        jLabel1.setText("Prueba Cambio");
+>>>>>>> origin/master
 
         jLabel2.setText("Contraseña");
 
@@ -46,6 +50,7 @@ public class JPanelInicioSesion extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(95, 95, 95)
+<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -58,6 +63,10 @@ public class JPanelInicioSesion extends javax.swing.JPanel {
                 .addContainerGap(148, Short.MAX_VALUE)
                 .addComponent(jbIniciarSesion)
                 .addGap(145, 145, 145))
+=======
+                .addComponent(fefe)
+                .addContainerGap(147, Short.MAX_VALUE))
+>>>>>>> origin/master
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
