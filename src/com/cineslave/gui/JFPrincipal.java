@@ -6,6 +6,7 @@
 package com.cineslave.gui;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +15,16 @@ import java.awt.CardLayout;
 public class JFPrincipal extends javax.swing.JFrame {
 
     JPanelInicioSesion panelInicioSesion = new JPanelInicioSesion(this);
+    JPanelCine panelCine = new JPanelCine(this);
+    JPanelCliente panelCliente = new JPanelCliente(this);
     
     public JFPrincipal() {
         initComponents();
         this.getContentPane().add(panelInicioSesion, "pInicio");
-        setBounds(100, 100, 600, 600);
+        this.getContentPane().add(panelCine, "pCine");
+        this.getContentPane().add(panelCliente, "pCliente");
+        this.getContentPane().add(panelCine, "pCine");
+        setBounds(100, 100, 800, 800);
         setVisible(true);
     }
 
@@ -31,21 +37,91 @@ public class JFPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
+        jMenu10 = new javax.swing.JMenu();
+        jMenu11 = new javax.swing.JMenu();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 509, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.CardLayout());
+
+        jMenu1.setText("Cine");
+        jMenu1.addMenuKeyListener(new javax.swing.event.MenuKeyListener() {
+            public void menuKeyPressed(javax.swing.event.MenuKeyEvent evt) {
+                jMenu1MenuKeyPressed(evt);
+            }
+            public void menuKeyReleased(javax.swing.event.MenuKeyEvent evt) {
+            }
+            public void menuKeyTyped(javax.swing.event.MenuKeyEvent evt) {
+            }
+        });
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu1MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Clientes");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Proveedores");
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Empleados");
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Productos");
+        jMenuBar1.add(jMenu5);
+
+        jMenu6.setText("Pedidos");
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setText("Reservas");
+        jMenuBar1.add(jMenu7);
+
+        jMenu8.setText("Peliculas");
+        jMenuBar1.add(jMenu8);
+
+        jMenu9.setText("Turnos");
+        jMenuBar1.add(jMenu9);
+
+        jMenu10.setText("Entradas");
+        jMenuBar1.add(jMenu10);
+
+        jMenu11.setText("Usarios");
+        jMenuBar1.add(jMenu11);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        cambiaPanel("pCine");
+        
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu1MenuKeyPressed(javax.swing.event.MenuKeyEvent evt) {//GEN-FIRST:event_jMenu1MenuKeyPressed
+        cambiaPanel("pCine");
+        JOptionPane.showMessageDialog(null, "hola");
+    }//GEN-LAST:event_jMenu1MenuKeyPressed
+
+    private void jMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MousePressed
+        cambiaPanel("pCine");
+        JOptionPane.showMessageDialog(null, "hola");
+    }//GEN-LAST:event_jMenu1MousePressed
 
     /**
      * @param args the command line arguments
@@ -88,5 +164,17 @@ public class JFPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
