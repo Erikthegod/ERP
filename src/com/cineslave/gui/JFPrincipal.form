@@ -46,12 +46,12 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Peliculas"/>
+            <Property name="text" type="java.lang.String" value="Pel&#xed;culas"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Turnos"/>
+            <Property name="text" type="java.lang.String" value="Sesiones"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu10">
@@ -61,7 +61,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu11">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Usarios"/>
+            <Property name="text" type="java.lang.String" value="Usuarios"/>
           </Properties>
         </Menu>
       </SubComponents>

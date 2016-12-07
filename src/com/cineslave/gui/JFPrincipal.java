@@ -91,16 +91,16 @@ public class JFPrincipal extends javax.swing.JFrame {
         jMenu7.setText("Reservas");
         jMenuBar1.add(jMenu7);
 
-        jMenu8.setText("Peliculas");
+        jMenu8.setText("Películas");
         jMenuBar1.add(jMenu8);
 
-        jMenu9.setText("Turnos");
+        jMenu9.setText("Sesiones");
         jMenuBar1.add(jMenu9);
 
         jMenu10.setText("Entradas");
         jMenuBar1.add(jMenu10);
 
-        jMenu11.setText("Usarios");
+        jMenu11.setText("Usuarios");
         jMenuBar1.add(jMenu11);
 
         setJMenuBar(jMenuBar1);
