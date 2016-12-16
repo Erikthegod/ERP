@@ -20,10 +20,11 @@ public class JFPrincipal extends javax.swing.JFrame {
     
     public JFPrincipal() {
         initComponents();
+        this.getContentPane().add(panelCine, "pCine");
         this.getContentPane().add(panelInicioSesion, "pInicio");
         this.getContentPane().add(panelCine, "pCine");
         this.getContentPane().add(panelCliente, "pCliente");
-        this.getContentPane().add(panelCine, "pCine");
+        
         setBounds(100, 100, 800, 800);
         setVisible(true);
     }
@@ -110,7 +111,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         cambiaPanel("pCine");
-        
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenu1MenuKeyPressed(javax.swing.event.MenuKeyEvent evt) {//GEN-FIRST:event_jMenu1MenuKeyPressed
