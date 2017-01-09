@@ -20,8 +20,8 @@ public class Gestor_Proveedor {
     Conexion con = new Conexion();
     Connection conexion;
 
-    public Gestor_Proveedor() throws Exception {
-        this.conexion = con.conectar();
+    public Gestor_Proveedor(Connection _con) throws Exception {
+        this.conexion = _con;
     }
 
     public void altaProveedor(Proveedor _proveedor) throws SQLException {
