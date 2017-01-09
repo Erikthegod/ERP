@@ -14,16 +14,16 @@ public class Proveedor {
     private int idProveedor;
     private int cif;
     private String nombre;
-    private int teléfono;
-    private String población;
+    private int telefono;
+    private String poblacion;
     private int cp;
 
     public Proveedor(int idProveedor, int cif, String nombre, int teléfono, String población, int cp) {
         this.idProveedor = idProveedor;
         this.cif = cif;
         this.nombre = nombre;
-        this.teléfono = teléfono;
-        this.población = población;
+        this.telefono = teléfono;
+        this.poblacion = población;
         this.cp = cp;
     }
 
@@ -51,20 +51,20 @@ public class Proveedor {
         this.nombre = nombre;
     }
 
-    public int getTeléfono() {
-        return teléfono;
+    public int getTelefono() {
+        return telefono;
     }
 
-    public void setTeléfono(int teléfono) {
-        this.teléfono = teléfono;
+    public void setTelefono(int teléfono) {
+        this.telefono = teléfono;
     }
 
-    public String getPoblación() {
-        return población;
+    public String getPoblacion() {
+        return poblacion;
     }
 
-    public void setPoblación(String población) {
-        this.población = población;
+    public void setPoblacion(String población) {
+        this.poblacion = población;
     }
 
     public int getCp() {

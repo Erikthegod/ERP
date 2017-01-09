@@ -12,7 +12,7 @@ package com.cineslave.modelo;
 public class Cliente {
 
     private int idCliente;
-    private int dni;
+    private String dni;
     private String nombre;
     private String apellidos;
     private int teléfono;
@@ -21,8 +21,7 @@ public class Cliente {
     private String usuario;
     private String contraseña;
 
-    public Cliente(int idCliente, int dni, String nombre, String apellidos, int teléfono, int cp, int puntos, String usuario, String contraseña) {
-        this.idCliente = idCliente;
+    public Cliente(String dni, String nombre, String apellidos, int teléfono, int cp, int puntos, String usuario, String contraseña) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -33,19 +32,11 @@ public class Cliente {
         this.contraseña = contraseña;
     }
 
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 

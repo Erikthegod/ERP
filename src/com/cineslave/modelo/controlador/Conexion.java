@@ -20,10 +20,10 @@ public class Conexion {
     public Connection conectar() throws Exception {
         try {
             //Carga del driver.
-            String driver = "org.sqlite.JDBC()";
+            String driver = "org.sqlite.JDBC";
             Class.forName(driver);
             //Establecimiento de la conexión.
-            String servidor = "xxxxxxxxxxxxxxx";
+            String servidor = "jdbc:sqlite:ERP.db";
             String user = "";
             String pass = "";
             conexion = DriverManager.getConnection(servidor, user, pass);

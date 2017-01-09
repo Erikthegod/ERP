@@ -5,8 +5,12 @@
  */
 package com.cineslave.gui;
 
+import com.cineslave.modelo.controlador.Conexion;
 import java.awt.CardLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
 
 /**
  *
@@ -14,19 +18,34 @@ import javax.swing.JOptionPane;
  */
 public class JFPrincipal extends javax.swing.JFrame {
 
-    JPanelInicioSesion panelInicioSesion = new JPanelInicioSesion(this);
-    JPanelCine panelCine = new JPanelCine(this);
-    JPanelCliente panelCliente = new JPanelCliente(this);
-    
-    public JFPrincipal() {
+    Conexion con;
+    Connection conTotal;
+    JPanelInicioSesion panelInicioSesion;
+    JPanelCine panelCine;
+    JPanelCliente panelCliente;
+
+    public JFPrincipal() throws Exception {
         initComponents();
+        con = new Conexion();
+        
+        try {
+            conTotal = con.conectar();
+            System.out.println("conectado");
+        } catch (Exception ex) {
+            Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+        panelInicioSesion = new JPanelInicioSesion(this);
+        panelCine = new JPanelCine(this);
+        panelCliente = new JPanelCliente(this, conTotal);
+        
         this.getContentPane().add(panelCine, "pCine");
         this.getContentPane().add(panelInicioSesion, "pInicio");
         this.getContentPane().add(panelCine, "pCine");
         this.getContentPane().add(panelCliente, "pCliente");
-        
+
         setBounds(100, 100, 800, 800);
         setVisible(true);
+
     }
 
     /**
@@ -65,16 +84,21 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenu1MousePressed(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu1MousePressed(evt);
             }
         });
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Clientes");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu2MousePressed(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Proveedores");
@@ -123,6 +147,11 @@ public class JFPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "hola");
     }//GEN-LAST:event_jMenu1MousePressed
 
+    private void jMenu2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MousePressed
+        cambiaPanel("pCliente");
+        JOptionPane.showMessageDialog(null, "hola");
+    }//GEN-LAST:event_jMenu2MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -153,11 +182,15 @@ public class JFPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFPrincipal().setVisible(true);
+                try {
+                    new JFPrincipal().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
-    
+
     protected void cambiaPanel(String nombrePanel) {
         CardLayout c = (CardLayout) (getContentPane().getLayout());
         c.show(getContentPane(), nombrePanel);

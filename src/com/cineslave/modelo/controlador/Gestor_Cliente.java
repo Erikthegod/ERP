@@ -20,31 +20,30 @@ public class Gestor_Cliente {
     Conexion con = new Conexion();
     Connection conexion;
 
-    public Gestor_Cliente() throws Exception {
-        this.conexion = con.conectar();
+    public Gestor_Cliente(Connection _con) throws Exception {
+        this.conexion = _con;
     }
 
     public void altaCliente(Cliente _cliente) throws SQLException {
         PreparedStatement ps;
         ResultSet rs = null;
-        String sql = "INSERT INTO CLIENTES VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO CLIENTE (dni, nombre, apellido,telefono,cp,puntos,usuario,pass) VALUES (?,?,?,?,?,?,?,?)";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(1, _cliente.getIdCliente());
-        ps.setInt(2, _cliente.getDni());
-        ps.setString(3, _cliente.getNombre());
-        ps.setString(4, _cliente.getApellidos());
-        ps.setInt(5, _cliente.getTeléfono());
-        ps.setInt(6, _cliente.getCp());
-        ps.setInt(7, _cliente.getPuntos());
-        ps.setString(8, _cliente.getUsuario());
-        ps.setString(9, _cliente.getContraseña());
+        ps.setString(1, _cliente.getDni());
+        ps.setString(2, _cliente.getNombre());
+        ps.setString(3, _cliente.getApellidos());
+        ps.setInt(4, _cliente.getTeléfono());
+        ps.setInt(5, _cliente.getCp());
+        ps.setInt(6, _cliente.getPuntos());
+        ps.setString(7, _cliente.getUsuario());
+        ps.setString(8, _cliente.getContraseña());
         ps.executeUpdate();
     }
 
     public void borrarCliente(String _dni) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "DELETE FROM CLIENTES WHERE DNI = ?";
+        String sql = "DELETE FROM CLIENTE WHERE DNI = ?";
         ps = conexion.prepareStatement(sql);
         ps.setString(1, _dni);
         modificaciones = ps.executeUpdate();
@@ -54,18 +53,17 @@ public class Gestor_Cliente {
     public void modificarCliente(Cliente _cliente) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "UPDATE CLIENTES SET (?,?,?,?,?,?,?,?,?) WHERE IDCLIENTE = ?";
+        String sql = "UPDATE CLIENTE SET (?,?,?,?,?,?,?) WHERE IDCLIENTE = ?";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(1, _cliente.getIdCliente());
-        ps.setInt(2, _cliente.getDni());
-        ps.setString(3, _cliente.getNombre());
-        ps.setString(4, _cliente.getApellidos());
-        ps.setInt(5, _cliente.getTeléfono());
-        ps.setInt(6, _cliente.getCp());
-        ps.setInt(7, _cliente.getPuntos());
-        ps.setString(8, _cliente.getUsuario());
-        ps.setString(9, _cliente.getContraseña());
-        ps.setInt(10, _cliente.getIdCliente());
+        //ps.setInt(1, _cliente.getIdCliente());
+        ps.setString(1, _cliente.getDni());
+        ps.setString(2, _cliente.getNombre());
+        ps.setString(3, _cliente.getApellidos());
+        ps.setInt(4, _cliente.getTeléfono());
+        ps.setInt(5, _cliente.getCp());
+        ps.setInt(6, _cliente.getPuntos());
+        ps.setString(7, _cliente.getUsuario());
+        ps.setString(8, _cliente.getContraseña());
         modificaciones = ps.executeUpdate();
         System.out.println("Clientes modificacdos= " + modificaciones);
     }
@@ -87,7 +85,7 @@ public class Gestor_Cliente {
             int punto = rs.getInt("puntos");
             String usuario = rs.getString("usuario");
             String contraseña = rs.getString("contraseña");
-            nuevoCliente = new Cliente(id,dni,nombre,apellidos,telefono,cp,punto,usuario,contraseña);
+            //nuevoCliente = new Cliente(id,dni,nombre,apellidos,telefono,cp,punto,usuario,contraseña);
         }
         return nuevoCliente;
     }
