@@ -11,6 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -23,6 +25,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     JPanelInicioSesion panelInicioSesion;
     JPanelCine panelCine;
     JPanelCliente panelCliente;
+    JPanelProveedor panelProveedor;
 
     public JFPrincipal() throws Exception {
         initComponents();
@@ -37,15 +40,16 @@ public class JFPrincipal extends javax.swing.JFrame {
         panelInicioSesion = new JPanelInicioSesion(this);
         panelCine = new JPanelCine(this);
         panelCliente = new JPanelCliente(this, conTotal);
+        panelProveedor = new JPanelProveedor(this, conTotal);
         
         this.getContentPane().add(panelCine, "pCine");
         this.getContentPane().add(panelInicioSesion, "pInicio");
         this.getContentPane().add(panelCine, "pCine");
         this.getContentPane().add(panelCliente, "pCliente");
+        this.getContentPane().add(panelProveedor, "pProveedor");
 
         setBounds(100, 100, 800, 800);
         setVisible(true);
-
     }
 
     /**
@@ -102,6 +106,11 @@ public class JFPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Proveedores");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu3MousePressed(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Empleados");
@@ -139,18 +148,19 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void jMenu1MenuKeyPressed(javax.swing.event.MenuKeyEvent evt) {//GEN-FIRST:event_jMenu1MenuKeyPressed
         cambiaPanel("pCine");
-        JOptionPane.showMessageDialog(null, "hola");
     }//GEN-LAST:event_jMenu1MenuKeyPressed
 
     private void jMenu1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MousePressed
         cambiaPanel("pCine");
-        JOptionPane.showMessageDialog(null, "hola");
     }//GEN-LAST:event_jMenu1MousePressed
 
     private void jMenu2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MousePressed
         cambiaPanel("pCliente");
-        JOptionPane.showMessageDialog(null, "hola");
     }//GEN-LAST:event_jMenu2MousePressed
+
+    private void jMenu3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MousePressed
+        cambiaPanel("pProveedor");
+    }//GEN-LAST:event_jMenu3MousePressed
 
     /**
      * @param args the command line arguments

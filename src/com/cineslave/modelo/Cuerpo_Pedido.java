@@ -12,10 +12,10 @@ package com.cineslave.modelo;
 public class Cuerpo_Pedido {
     
     private int idPedido;
-private int codProducto;
-private String descripProducto;
-private int ctd;
-private int precio;
+    private int codProducto;
+    private String descripProducto;
+    private int ctd;
+    private int precio;
 
     public Cuerpo_Pedido(int idPedido, int codProducto, String descripProducto, int ctd, int precio) {
         this.idPedido = idPedido;
@@ -25,6 +25,24 @@ private int precio;
         this.precio = precio;
     }
 
+    /**
+     * Constructor para realizar pedidos
+     * @param _codProducto codigo del producto elegido
+     * @param _descripProducto descripcion del producto
+     * @param _ctd cantidad del producto elegido
+     * @param _precio precio del producto
+     */
+    public Cuerpo_Pedido(int _codProducto, String _descripProducto, int _ctd, int _precio) {
+        this.codProducto = _codProducto;
+        this.descripProducto = _descripProducto;
+        this.ctd = _ctd;
+        this.precio = _precio;
+    }
+
+    public int getImporteTotalSinIva(){
+        return getPrecio()*getCtd();
+    }
+    
     public int getIdPedido() {
         return idPedido;
     }
