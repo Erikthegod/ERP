@@ -43,9 +43,8 @@ public class Gestor_Cliente {
     public void borrarCliente(String _dni) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "DELETE FROM CLIENTE WHERE DNI = ?";
+        String sql = "DELETE FROM CLIENTE WHERE DNI = "+_dni+"";
         ps = conexion.prepareStatement(sql);
-        ps.setString(1, _dni);
         modificaciones = ps.executeUpdate();
         System.out.println("Clientes borrados: " + modificaciones);
     }
@@ -53,9 +52,8 @@ public class Gestor_Cliente {
     public void modificarCliente(Cliente _cliente) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "UPDATE CLIENTE SET (?,?,?,?,?,?,?) WHERE IDCLIENTE = ?";
+        String sql = "UPDATE CLIENTE SET (?,?,?,?,?,?,?,?) WHERE IDCLIENTE = "+_cliente.getDni()+"";
         ps = conexion.prepareStatement(sql);
-        //ps.setInt(1, _cliente.getIdCliente());
         ps.setString(1, _cliente.getDni());
         ps.setString(2, _cliente.getNombre());
         ps.setString(3, _cliente.getApellidos());
@@ -65,27 +63,29 @@ public class Gestor_Cliente {
         ps.setString(7, _cliente.getUsuario());
         ps.setString(8, _cliente.getContraseña());
         modificaciones = ps.executeUpdate();
-        System.out.println("Clientes modificacdos= " + modificaciones);
+        System.out.println("Clientes modificados= " + modificaciones);
     }
 
     public Cliente consultacliente(String _dni) throws SQLException {
         PreparedStatement ps;
         ResultSet rs = null;
         Cliente nuevoCliente = null;
-        String sql = "SELECT * FROM PROPIETARIOS";
+        String sql = "SELECT * FROM CLIENTE WHERE ID ="+_dni+"";
         ps = conexion.prepareStatement(sql);
         rs = ps.executeQuery();
         while (rs.next() == true) {
-            int id = rs.getInt("id");
-            int dni = rs.getInt("dni");
-            String nombre = rs.getString("nombre");
-            String apellidos = rs.getString("apellido");
-            int telefono = rs.getInt("telefono");
-            int cp = rs.getInt("cp");
-            int punto = rs.getInt("puntos");
-            String usuario = rs.getString("usuario");
-            String contraseña = rs.getString("contraseña");
-            //nuevoCliente = new Cliente(id,dni,nombre,apellidos,telefono,cp,punto,usuario,contraseña);
+            /*int id = rs.getInt(1);
+            int dni = rs.getInt(2);
+            String nombre = rs.getString(3);
+            String apellidos = rs.getString(4);
+            int telefono = rs.getInt(5);
+            int cp = rs.getInt(6);
+            int punto = rs.getInt(7);
+            String usuario = rs.getString(8);
+            String contraseña = rs.getString(9);*/
+            //id,dni,nombre,apellidos,telefono,cp,punto,usuario,contraseña
+            nuevoCliente = new Cliente(rs.getInt(1),rs.getString(2),rs.getString(3),
+            rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getInt(7),rs.getString(8),rs.getString(9));
         }
         return nuevoCliente;
     }

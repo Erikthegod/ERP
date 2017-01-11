@@ -32,6 +32,20 @@ public class Cliente {
         this.contraseña = contraseña;
     }
 
+    public Cliente(int idCliente, String dni, String nombre, String apellidos, int teléfono, int cp, int puntos, String usuario, String contraseña) {
+        this.idCliente = idCliente;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.teléfono = teléfono;
+        this.cp = cp;
+        this.puntos = puntos;
+        this.usuario = usuario;
+        this.contraseña = contraseña;
+    }
+    
+    
+
     public String getDni() {
         return dni;
     }
