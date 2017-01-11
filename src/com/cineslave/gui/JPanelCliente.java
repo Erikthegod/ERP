@@ -202,6 +202,7 @@ public class JPanelCliente extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(JPanelCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+        borrarCampos();
     }//GEN-LAST:event_jbAltaActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
@@ -210,7 +211,7 @@ public class JPanelCliente extends javax.swing.JPanel {
         String apellido = jtfApellido.getText();
         int telefono = Integer.parseInt(jtfTelefono.getText());
         int cp = Integer.parseInt(jtfCP.getText());
-        int puntos = 0;
+        int puntos = (int) jsPuntos.getValue();
         String usuario = jtfUsuario.getText();
         String pass = jtfPass.getText();
         Cliente nuevoCliente = new Cliente(dni, nombre, apellido, telefono, cp, puntos, usuario, pass);
@@ -232,7 +233,7 @@ public class JPanelCliente extends javax.swing.JPanel {
         }
         try {
             gc = new Gestor_Cliente(con);
-            consultaCliente = gc.consultacliente(dni);
+            consultaCliente = gc.consultaCliente(dni);
         } catch (Exception ex) {
             Logger.getLogger(JPanelCliente.class.getName()).log(Level.SEVERE, null, ex);
         }

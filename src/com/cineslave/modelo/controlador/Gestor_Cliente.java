@@ -52,7 +52,7 @@ public class Gestor_Cliente {
     public void modificarCliente(Cliente _cliente) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "UPDATE CLIENTE SET (?,?,?,?,?,?,?,?) WHERE IDCLIENTE = "+_cliente.getDni()+"";
+        String sql = "UPDATE CLIENTE SET (?,?,?,?,?,?,?,?) WHERE DNI = "+_cliente.getDni()+"";
         ps = conexion.prepareStatement(sql);
         ps.setString(1, _cliente.getDni());
         ps.setString(2, _cliente.getNombre());
@@ -66,11 +66,11 @@ public class Gestor_Cliente {
         System.out.println("Clientes modificados= " + modificaciones);
     }
 
-    public Cliente consultacliente(String _dni) throws SQLException {
+    public Cliente consultaCliente(String _dni) throws SQLException {
         PreparedStatement ps;
         ResultSet rs = null;
         Cliente nuevoCliente = null;
-        String sql = "SELECT * FROM CLIENTE WHERE ID ="+_dni+"";
+        String sql = "SELECT * FROM CLIENTE WHERE DNI ="+_dni+"";
         ps = conexion.prepareStatement(sql);
         rs = ps.executeQuery();
         while (rs.next() == true) {
