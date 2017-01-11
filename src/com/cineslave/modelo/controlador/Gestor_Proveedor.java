@@ -39,9 +39,8 @@ public class Gestor_Proveedor {
     public void borrarProveedor(int _cif) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "DELETE FROM PROVEEDORES WHERE CIF = ?";
+        String sql = "DELETE FROM PROVEEDORES WHERE CIF = "+_cif+"";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(1, _cif);
         modificaciones = ps.executeUpdate();
         System.out.println("Proveedores borrados: " + modificaciones);
     }
@@ -55,41 +54,27 @@ public class Gestor_Proveedor {
     public void modificarProveedor(int _cif, Proveedor _proveedor) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "UPDATE PROVEEDORES SET cif=?, nombre=?, telefono=?, poblacion=?, cp=? WHERE CIF = ?";
+        String sql = "UPDATE PROVEEDORES SET cif=?, nombre=?, telefono=?, poblacion=?, cp=? WHERE CIF = "+_cif+"";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(6, _cif);//dato del where
-        //ps.setInt(1, _proveedor.getIdProveedor());
         ps.setInt(1, _proveedor.getCif());
         ps.setString(2, _proveedor.getNombre());
         ps.setInt(3, _proveedor.getTelefono());
         ps.setString(4, _proveedor.getPoblacion());
         ps.setInt(5, _proveedor.getCp());
         modificaciones = ps.executeUpdate();
-        System.out.println("Proveedores modificacdos: " + modificaciones);
+        System.out.println("Proveedores modificacdos: " +  modificaciones);
     }
 
     public Proveedor consultaProveedor(int _cif) throws SQLException {
         PreparedStatement ps;
         ResultSet rs = null;
         Proveedor nuevoProveedor = null;
-        String sql = "SELECT * FROM PROVEEDORES WHERE CIF = ?";
+        String sql = "SELECT * FROM PROVEEDORES WHERE CIF = "+_cif+"";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(1, _cif);
         rs = ps.executeQuery();
-        int id;
-        int cfi;
-        String nombre;
-        int telefono;
-        String poblacion;
-        int cp;
         while (rs.next() == true) {
-            id = rs.getInt(1);//idProveedor
-            cfi = rs.getInt(2);//cif
-            nombre = rs.getString(3);//nombre
-            telefono = rs.getInt(4);//telefono
-            poblacion = rs.getString(5);//poblacion
-            cp = rs.getInt(6);//cp
-            nuevoProveedor = new Proveedor(id, cfi, nombre, telefono, poblacion, cp);
+            //1 idProveedor//2 cif//3 nombre//4 telefono//5 poblacion//6 cp
+            nuevoProveedor = new Proveedor(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
         }
         return nuevoProveedor;
     }
