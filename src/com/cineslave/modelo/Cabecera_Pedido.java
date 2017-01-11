@@ -5,6 +5,9 @@
  */
 package com.cineslave.modelo;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author juanxxiii
@@ -14,15 +17,28 @@ public class Cabecera_Pedido {
     private int idPedido;
     private String fecha;
     private int importeTotalsinIva;
-    private int iva;
+    private final float IVA;
     private int importeTotalConIva;
+    private Cuerpo_Pedido cp;
+    private final Date myDate = new Date();
 
     public Cabecera_Pedido(int idPedido, String fecha, int importeTotalsinIva, int iva, int importeTotalConIva) {
         this.idPedido = idPedido;
-        this.fecha = fecha;
-        this.importeTotalsinIva = importeTotalsinIva;
-        this.iva = iva;
-        this.importeTotalConIva = importeTotalConIva;
+        this.fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
+        this.importeTotalsinIva = cp.getImporteTotalSinIva();
+        this.IVA = 0.21f;
+        this.importeTotalConIva = (int) (cp.getImporteTotalSinIva()*IVA);
+    }
+
+    public Cabecera_Pedido(String fecha, int importeTotalsinIva, int iva, int importeTotalConIva) {
+        this.fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
+        this.importeTotalsinIva = cp.getImporteTotalSinIva();
+        this.IVA = 0.21f;
+        this.importeTotalConIva = (int) (cp.getImporteTotalSinIva()*IVA);
+    }
+
+    public float getIVA() {
+        return IVA;
     }
 
     public int getIdPedido() {
@@ -47,14 +63,6 @@ public class Cabecera_Pedido {
 
     public void setImporteTotalsinIva(int importeTotalsinIva) {
         this.importeTotalsinIva = importeTotalsinIva;
-    }
-
-    public int getIva() {
-        return iva;
-    }
-
-    public void setIva(int iva) {
-        this.iva = iva;
     }
 
     public int getImporteTotalConIva() {
