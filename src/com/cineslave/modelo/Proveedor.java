@@ -18,13 +18,21 @@ public class Proveedor {
     private String poblacion;
     private int cp;
 
-    public Proveedor(int idProveedor, int cif, String nombre, int teléfono, String población, int cp) {
-        this.idProveedor = idProveedor;
-        this.cif = cif;
-        this.nombre = nombre;
-        this.telefono = teléfono;
-        this.poblacion = población;
-        this.cp = cp;
+    public Proveedor(int _cif, String _nombre, int _telefono, String _poblacion, int _cp) {
+        this.cif = _cif;
+        this.nombre = _nombre;
+        this.telefono = _telefono;
+        this.poblacion = _poblacion;
+        this.cp = _cp;
+    }
+    
+    public Proveedor(int _idProveedor, int _cif, String _nombre, int _telefono, String _poblacion, int _cp) {
+        this.idProveedor = _idProveedor;
+        this.cif = _cif;
+        this.nombre = _nombre;
+        this.telefono = _telefono;
+        this.poblacion = _poblacion;
+        this.cp = _cp;
     }
 
     public int getIdProveedor() {

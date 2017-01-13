@@ -51,16 +51,16 @@ public class Gestor_Pedidos {
     public void eliminarPedido(String _fecha) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "DELETE FROM Cuerpo_Pedido WHERE fecha = " + _fecha + "";
+        String sql = "DELETE FROM Cabecera_Pedido WHERE fecha = " + _fecha + "";
         ps = conexion.prepareStatement(sql);
         modificaciones = ps.executeUpdate();
         System.out.println("Proveedores borrados: " + modificaciones);
     }
 
-    public void modificarPedido(int _cif, Cuerpo_Pedido _cuerpo_pedido) throws SQLException {
+    public void modificarPedido(String _fecha, Cuerpo_Pedido _cuerpo_pedido) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "UPDATE PROVEEDORES SET codProducto=?, descripProducto=?, ctd=?, precio=? WHERE CIF = " + _cif + "";
+        String sql = "UPDATE Cabecera_Pedido SET codProducto=?, descripProducto=?, ctd=?, precio=? WHERE fecha = " + _fecha + "";
         ps = conexion.prepareStatement(sql);
         ps.setInt(1, _cuerpo_pedido.getCodProducto());
         ps.setString(2, _cuerpo_pedido.getDescripProducto());
@@ -70,17 +70,18 @@ public class Gestor_Pedidos {
         System.out.println("Proveedores modificacdos: " + modificaciones);
     }
 
-    public Cabecera_Pedido consultaPedido(int _cif) throws SQLException {
+    public Cabecera_Pedido consultaPedido(String _fecha) throws SQLException {
         PreparedStatement ps;
         ResultSet rs = null;
-        Cuerpo_Pedido nuevoPedido = null;
-        String sql = "SELECT * FROM PROVEEDORES WHERE CIF = " + _cif + "";
+        Cabecera_Pedido caPedido = null;
+        Cuerpo_Pedido cuPedido = null;
+        String sql = "SELECT * FROM Cabecera_Pedido WHERE fecha = " + _fecha + "";
         ps = conexion.prepareStatement(sql);
         rs = ps.executeQuery();
         while (rs.next() == true) {
             //1 idProveedor//2 cif//3 nombre//4 telefono//5 poblacion//6 cp
-            nuevoProveedor = new Proveedor(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
+            caPedido = new Cabecera_Pedido(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4));
         }
-        return nuevoProveedor;
+        return caPedido;
     }
 }

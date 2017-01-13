@@ -26,7 +26,6 @@ public class Gestor_Cliente {
 
     public void altaCliente(Cliente _cliente) throws SQLException {
         PreparedStatement ps;
-        ResultSet rs = null;
         String sql = "INSERT INTO CLIENTE (dni, nombre, apellido,telefono,cp,puntos,usuario,pass) VALUES (?,?,?,?,?,?,?,?)";
         ps = conexion.prepareStatement(sql);
         ps.setString(1, _cliente.getDni());

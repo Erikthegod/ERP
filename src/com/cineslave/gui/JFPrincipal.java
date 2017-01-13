@@ -9,10 +9,7 @@ import com.cineslave.modelo.controlador.Conexion;
 import java.awt.CardLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import java.sql.Connection;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  *
