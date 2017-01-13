@@ -96,6 +96,11 @@ public class JPanelCliente extends javax.swing.JPanel {
         });
 
         jbBorrar.setText("Borrar");
+        jbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBorrarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Puntos");
 
@@ -244,7 +249,20 @@ public class JPanelCliente extends javax.swing.JPanel {
         jtfCP.setText(String.valueOf(consultaCliente.getCp()));
         jtfUsuario.setText(consultaCliente.getUsuario());
         jtfPass.setText(consultaCliente.getContraseña());
+        jsPuntos.setValue(consultaCliente.getPuntos());
     }//GEN-LAST:event_jbConsultaActionPerformed
+
+    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        String dni = jtfDNI.getText();
+        try {
+            gc = new Gestor_Cliente(con);
+            gc.borrarCliente(dni);
+            JOptionPane.showMessageDialog(null, "Cliente eliminado");
+        } catch (Exception ex) {
+            Logger.getLogger(JPanelCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        borrarCampos();
+    }//GEN-LAST:event_jbBorrarActionPerformed
 
     private void borrarCampos(){
         jtfDNI.setText("");
