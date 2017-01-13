@@ -106,6 +106,10 @@ public class Cliente {
         return contraseña;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
