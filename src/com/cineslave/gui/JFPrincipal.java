@@ -26,6 +26,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     JPanelCine panelCine;
     JPanelCliente panelCliente;
     JPanelProveedor panelProveedor;
+    JPanelEmpleados panelEmpleados;
 
     public JFPrincipal() throws Exception {
         initComponents();
@@ -41,12 +42,14 @@ public class JFPrincipal extends javax.swing.JFrame {
         panelCine = new JPanelCine(this);
         panelCliente = new JPanelCliente(this, conTotal);
         panelProveedor = new JPanelProveedor(this, conTotal);
+        panelEmpleados = new JPanelEmpleados(this, conTotal);
         
         this.getContentPane().add(panelCine, "pCine");
         this.getContentPane().add(panelInicioSesion, "pInicio");
         this.getContentPane().add(panelCine, "pCine");
         this.getContentPane().add(panelCliente, "pCliente");
         this.getContentPane().add(panelProveedor, "pProveedor");
+        this.getContentPane().add(panelEmpleados, "pEmpleados");
 
         setBounds(100, 100, 800, 800);
         setVisible(true);
@@ -114,6 +117,11 @@ public class JFPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Empleados");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu4MousePressed(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Productos");
@@ -161,6 +169,10 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void jMenu3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MousePressed
         cambiaPanel("pProveedor");
     }//GEN-LAST:event_jMenu3MousePressed
+
+    private void jMenu4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MousePressed
+        cambiaPanel("pEmpleados");
+    }//GEN-LAST:event_jMenu4MousePressed
 
     /**
      * @param args the command line arguments

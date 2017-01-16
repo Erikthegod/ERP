@@ -17,7 +17,6 @@ import java.sql.SQLException;
  */
 public class Gestor_Cliente {
 
-    Conexion con = new Conexion();
     Connection conexion;
 
     public Gestor_Cliente(Connection _con) throws Exception {
@@ -48,7 +47,7 @@ public class Gestor_Cliente {
         System.out.println("Clientes borrados: " + modificaciones);
     }
 
-    public void modificarCliente(Cliente _cliente) throws SQLException {
+    public int modificarCliente(Cliente _cliente) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
         String sql = "UPDATE CLIENTE SET DNI=?"
@@ -72,6 +71,7 @@ public class Gestor_Cliente {
         ps.setString(9, _cliente.getDni());
         modificaciones = ps.executeUpdate();
         System.out.println("Clientes modificados= " + modificaciones);
+        return modificaciones;
     }
 
     public Cliente consultaCliente(String _dni) throws SQLException {
