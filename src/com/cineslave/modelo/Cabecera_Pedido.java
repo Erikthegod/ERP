@@ -20,13 +20,21 @@ public class Cabecera_Pedido {
     private final float IVA;
     private int importeTotalConIva;
     private Cuerpo_Pedido cp;
-    private final Date myDate;
+    private final Date myDate = new Date();
+
+    public Cabecera_Pedido(int idPedido, String fecha, int importeTotalsinIva, int iva, int importeTotalConIva) {
+        this.idPedido = idPedido;
+        this.fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
+        this.importeTotalsinIva = cp.getImporteTotalSinIva();
+        this.IVA = 0.21f;
+        this.importeTotalConIva = (int) (cp.getImporteTotalSinIva()*IVA);
+    }
 
     public Cabecera_Pedido(String fecha, int importeTotalsinIva, int iva, int importeTotalConIva) {
-        this.fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate = new Date());
-        this.importeTotalsinIva = cp.getImporteSinIva();
+        this.fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
+        this.importeTotalsinIva = cp.getImporteTotalSinIva();
         this.IVA = 0.21f;
-        this.importeTotalConIva = (int) (cp.getImporteSinIva()*IVA);
+        this.importeTotalConIva = (int) (cp.getImporteTotalSinIva()*IVA);
     }
 
     public float getIVA() {

@@ -12,28 +12,19 @@ package com.cineslave.modelo;
 public class Empleado {
 
     private int idEmpleado;
-    private String dni;
+    private int dni;
     private String nombre;
     private String apellidos;
-    private int telefono;
+    private int teléfono;
     private String fechaInicio;
     private String cargo;
 
-    public Empleado(String dni, String nombre, String apellidos, int telefono, String fechaInicio, String cargo) {
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.telefono = telefono;
-        this.fechaInicio = fechaInicio;
-        this.cargo = cargo;
-    }
-
-    public Empleado(int idEmpleado, String dni, String nombre, String apellidos, int telefono, String fechaInicio, String cargo) {
+    public Empleado(int idEmpleado, int dni, String nombre, String apellidos, int teléfono, String fechaInicio, String cargo) {
         this.idEmpleado = idEmpleado;
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.telefono = telefono;
+        this.teléfono = teléfono;
         this.fechaInicio = fechaInicio;
         this.cargo = cargo;
     }
@@ -46,11 +37,11 @@ public class Empleado {
         this.idEmpleado = idEmpleado;
     }
 
-    public String getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
@@ -70,12 +61,12 @@ public class Empleado {
         this.apellidos = apellidos;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public int getTeléfono() {
+        return teléfono;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public void setTeléfono(int teléfono) {
+        this.teléfono = teléfono;
     }
 
     public String getFechaInicio() {
@@ -93,5 +84,7 @@ public class Empleado {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-
+    
+    
+    
 }

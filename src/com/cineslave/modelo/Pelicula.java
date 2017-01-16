@@ -11,24 +11,24 @@ package com.cineslave.modelo;
  */
 public class Pelicula {
 
-    private int idPelicula;
+    private int idPelícula;
     private String nombre;
     private int duracion;
     private int edad;
 
-    public Pelicula(int idPelicula, String nombre, int duracion, int edad) {
-        this.idPelicula = idPelicula;
+    public Pelicula(int idPelícula, String nombre, int duracion, int edad) {
+        this.idPelícula = idPelícula;
         this.nombre = nombre;
         this.duracion = duracion;
         this.edad = edad;
     }
 
-    public int getIdPelicula() {
-        return idPelicula;
+    public int getIdPelícula() {
+        return idPelícula;
     }
 
-    public void setIdPelicula(int idPelicula) {
-        this.idPelicula = idPelicula;
+    public void setIdPelícula(int idPelícula) {
+        this.idPelícula = idPelícula;
     }
 
     public String getNombre() {

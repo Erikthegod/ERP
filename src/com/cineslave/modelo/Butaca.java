@@ -12,12 +12,12 @@ package com.cineslave.modelo;
 public class Butaca {
 
     private int idButaca;
+    private int idSala;
     private int numFila;
-    private int numColumna;
 
-    public Butaca(int idButaca, int numColumna, int numFila) {
+    public Butaca(int idButaca, int idSala, int numFila) {
         this.idButaca = idButaca;
-        this.numColumna = numColumna;
+        this.idSala = idSala;
         this.numFila = numFila;
     }
 
@@ -29,12 +29,12 @@ public class Butaca {
         this.idButaca = idButaca;
     }
 
-    public int getNumColumna() {
-        return numColumna;
+    public int getIdSala() {
+        return idSala;
     }
 
-    public void setNumColumna(int numColumna) {
-        this.numColumna = numColumna;
+    public void setIdSala(int idSala) {
+        this.idSala = idSala;
     }
 
     public int getNumFila() {
