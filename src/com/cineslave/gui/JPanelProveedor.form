@@ -142,16 +142,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Baja proveedor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBajaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbModificar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar proveedor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbModificarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbConsultar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar proveedor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbConsultarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -77,10 +77,25 @@ public class JPanelProveedor extends javax.swing.JPanel {
         jLabel4.setText("CP");
 
         jbBaja.setText("Baja proveedor");
+        jbBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBajaActionPerformed(evt);
+            }
+        });
 
         jbModificar.setText("Modificar proveedor");
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModificarActionPerformed(evt);
+            }
+        });
 
         jbConsultar.setText("Consultar proveedor");
+        jbConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,18 +164,61 @@ public class JPanelProveedor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaActionPerformed
+        Proveedor nuevoProveedor = new Proveedor(jtfCif.getText(), jtfNombre.getText(),
+                Integer.parseInt(jtfTelefono.getText()), jtfPoblacion.getText(), 
+                Integer.parseInt(jtfCp.getText()));
         try {
-            Proveedor nuevoProveedor = new Proveedor(Integer.parseInt(jtfCif.getText()
-            ), jtfNombre.getText(), Integer.parseInt(jtfTelefono.getText()),
-                    jtfPoblacion.getText(), Integer.parseInt(jtfCp.getText()));
-            System.out.println("no");
+            gp = new Gestor_Proveedor(con);
             gp.altaProveedor(nuevoProveedor);
-            System.out.println("final");
         } catch (SQLException ex) {
-            //Logger.getLogger(JPanelProveedor.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage());
+            Logger.getLogger(JPanelProveedor.class.getName()).log(Level.SEVERE, null, ex);
+            //altaProveedor
+        } catch (Exception ex) {
+            Logger.getLogger(JPanelProveedor.class.getName()).log(Level.SEVERE, null, ex);
+            //Gestor_proveedor(con)
         }
     }//GEN-LAST:event_jbAltaActionPerformed
+
+    private void jbBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBajaActionPerformed
+        try {
+            gp = new Gestor_Proveedor(con);
+            gp.borrarProveedor(jtfCif.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanelProveedor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(JPanelProveedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbBajaActionPerformed
+
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        Proveedor nuevoProveedor = new Proveedor(jtfCif.getText(), jtfNombre.getText(),
+                Integer.parseInt(jtfTelefono.getText()), jtfPoblacion.getText(), 
+                Integer.parseInt(jtfCp.getText()));
+        try {
+            gp = new Gestor_Proveedor(con);
+            gp.modificarProveedor(nuevoProveedor);
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanelProveedor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(JPanelProveedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jbConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultarActionPerformed
+        try {
+            gp = new Gestor_Proveedor(con);
+            Proveedor nuevoProveedor = gp.consultaProveedor(jtfCif.getText());
+            jtfCif.setText(nuevoProveedor.getCif());
+            jtfNombre.setText(nuevoProveedor.getNombre());
+            jtfTelefono.setText(String.valueOf(nuevoProveedor.getTelefono()));
+            jtfPoblacion.setText(nuevoProveedor.getPoblacion());
+            jtfCp.setText(String.valueOf(nuevoProveedor.getCp()));
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanelProveedor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(JPanelProveedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

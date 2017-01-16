@@ -20,7 +20,7 @@ public class Gestor_Proveedor {
     Conexion con = new Conexion();
     Connection conexion;
 
-    public Gestor_Proveedor() throws Exception {
+    public Gestor_Proveedor(Connection _con) throws Exception {
         this.conexion = con.conectar();
     }
 
@@ -28,7 +28,7 @@ public class Gestor_Proveedor {
         PreparedStatement ps;
         String sql = "INSERT INTO PROVEEDORES (cif, nombre, telefono,poblacion,cp) VALUES (?,?,?,?,?)";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(1, _proveedor.getCif());
+        ps.setString(1, _proveedor.getCif());
         ps.setString(2, _proveedor.getNombre());
         ps.setInt(3, _proveedor.getTelefono());
         ps.setString(4, _proveedor.getPoblacion());
@@ -36,11 +36,12 @@ public class Gestor_Proveedor {
         ps.executeUpdate();
     }
 
-    public void borrarProveedor(int _cif) throws SQLException {
+    public void borrarProveedor(String _cif) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "DELETE FROM PROVEEDORES WHERE CIF = "+_cif+"";
+        String sql = "DELETE FROM PROVEEDORES WHERE CIF = ?";
         ps = conexion.prepareStatement(sql);
+        ps.setString(1, _cif);
         modificaciones = ps.executeUpdate();
         System.out.println("Proveedores borrados: " + modificaciones);
     }
@@ -51,12 +52,13 @@ public class Gestor_Proveedor {
      * @param _proveedor objeto para devolver valores
      * @throws SQLException
      */
-    public void modificarProveedor(int _cif, Proveedor _proveedor) throws SQLException {
+    public void modificarProveedor(Proveedor _proveedor) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "UPDATE PROVEEDORES SET cif=?, nombre=?, telefono=?, poblacion=?, cp=? WHERE CIF = " + _cif + "";
+        String sql = "UPDATE PROVEEDORES SET cif=?, nombre=?, telefono=?, poblacion=?, cp=? WHERE CIF = ?";
         ps = conexion.prepareStatement(sql);
-        ps.setInt(1, _proveedor.getCif());
+        ps.setString(6, _proveedor.getCif());
+        ps.setString(1, _proveedor.getCif());
         ps.setString(2, _proveedor.getNombre());
         ps.setInt(3, _proveedor.getTelefono());
         ps.setString(4, _proveedor.getPoblacion());
@@ -65,16 +67,23 @@ public class Gestor_Proveedor {
         System.out.println("Proveedores modificacdos: " + modificaciones);
     }
 
-    public Proveedor consultaProveedor(int _cif) throws SQLException {
+    public Proveedor consultaProveedor(String _cif) throws SQLException {
         PreparedStatement ps;
         ResultSet rs = null;
         Proveedor nuevoProveedor = null;
-        String sql = "SELECT * FROM PROVEEDORES WHERE CIF = " + _cif + "";
+        String sql = "SELECT * FROM PROVEEDORES WHERE CIF = ?";
         ps = conexion.prepareStatement(sql);
+        ps.setString(1, _cif);
         rs = ps.executeQuery();
         while (rs.next() == true) {
             //1 id//2 cif//3 nombre//4 telefono//5 poblacion// 6 cp
-            nuevoProveedor = new Proveedor(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
+            //System.out.println(rs.getInt(1));
+            System.out.println(rs.getString(2));
+            System.out.println(rs.getString(3));
+            System.out.println(rs.getInt(4));
+            System.out.println(rs.getString(5));
+            System.out.println(rs.getInt(6));
+            nuevoProveedor = new Proveedor(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
         }
         return nuevoProveedor;
     }
