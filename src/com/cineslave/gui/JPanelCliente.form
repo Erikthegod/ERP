@@ -51,11 +51,11 @@
                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jtfCP" min="-2" pref="117" max="-2" attributes="0"/>
-                  <Component id="jtfUsuario" min="-2" pref="117" max="-2" attributes="0"/>
-                  <Component id="jtfPass" min="-2" pref="119" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jtfPass" pref="119" max="32767" attributes="0"/>
                   <Component id="jsPuntos" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
+                  <Component id="jtfUsuario" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jtfCP" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -195,6 +195,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Borrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBorrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="jsPuntos">
     </Component>

@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,19 +13,27 @@ package com.cineslave.modelo;
 public class Proveedor {
 
     private int idProveedor;
-    private int cif;
+    private String cif;
     private String nombre;
     private int telefono;
     private String poblacion;
     private int cp;
 
-    public Proveedor(int idProveedor, int cif, String nombre, int teléfono, String población, int cp) {
-        this.idProveedor = idProveedor;
-        this.cif = cif;
-        this.nombre = nombre;
-        this.telefono = teléfono;
-        this.poblacion = población;
-        this.cp = cp;
+    public Proveedor(String _cif, String _nombre, int _telefono, String _poblacion, int _cp) {
+        this.cif = _cif;
+        this.nombre = _nombre;
+        this.telefono = _telefono;
+        this.poblacion = _poblacion;
+        this.cp = _cp;
+    }
+    
+    public Proveedor(int _idProveedor, String _cif, String _nombre, int _telefono, String _poblacion, int _cp) {
+        this.idProveedor = _idProveedor;
+        this.cif = _cif;
+        this.nombre = _nombre;
+        this.telefono = _telefono;
+        this.poblacion = _poblacion;
+        this.cp = _cp;
     }
 
     public int getIdProveedor() {
@@ -35,11 +44,11 @@ public class Proveedor {
         this.idProveedor = idProveedor;
     }
 
-    public int getCif() {
+    public String getCif() {
         return cif;
     }
 
-    public void setCif(int cif) {
+    public void setCif(String cif) {
         this.cif = cif;
     }
 

@@ -96,6 +96,11 @@ public class JPanelCliente extends javax.swing.JPanel {
         });
 
         jbBorrar.setText("Borrar");
+        jbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBorrarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Puntos");
 
@@ -130,11 +135,11 @@ public class JPanelCliente extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(59, 59, 59)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfCP, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jsPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtfPass, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                    .addComponent(jsPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfUsuario)
+                    .addComponent(jtfCP))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jbBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -206,6 +211,7 @@ public class JPanelCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jbAltaActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        int modificaciones;
         String dni = jtfDNI.getText();
         String nombre = jtfNombre.getText();
         String apellido = jtfApellido.getText();
@@ -217,36 +223,51 @@ public class JPanelCliente extends javax.swing.JPanel {
         Cliente nuevoCliente = new Cliente(dni, nombre, apellido, telefono, cp, puntos, usuario, pass);
         try {
             gc = new Gestor_Cliente(con);
-            gc.modificarCliente(nuevoCliente);
-            JOptionPane.showMessageDialog(null, "Cliente Modificado");
+            modificaciones = gc.modificarCliente(nuevoCliente);
+            JOptionPane.showMessageDialog(null, "Clientes modificados" + modificaciones);
         } catch (Exception ex) {
-            Logger.getLogger(JPanelCliente.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error BBDD");
         }
         borrarCampos();
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultaActionPerformed
         String dni = jtfDNI.getText();
-        Cliente consultaCliente=null;
-        if(dni==""){
+        Cliente consultaCliente = null;
+        if (dni.equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena el campo DNI para realizar la consulta");
+        } else {
+            try {
+                gc = new Gestor_Cliente(con);
+                consultaCliente = gc.consultaCliente(dni);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error BBDD");
+            }
+            jtfDNI.setText(consultaCliente.getDni());
+            jtfNombre.setText(consultaCliente.getNombre());
+            jtfApellido.setText(consultaCliente.getApellidos());
+            jtfTelefono.setText(String.valueOf(consultaCliente.getTeléfono()));
+            jtfCP.setText(String.valueOf(consultaCliente.getCp()));
+            jtfUsuario.setText(consultaCliente.getUsuario());
+            jtfPass.setText(consultaCliente.getContraseña());
+            jsPuntos.setValue(consultaCliente.getPuntos());
         }
-        try {
-            gc = new Gestor_Cliente(con);
-            consultaCliente = gc.consultaCliente(dni);
-        } catch (Exception ex) {
-            Logger.getLogger(JPanelCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        jtfDNI.setText(consultaCliente.getDni());
-        jtfNombre.setText(consultaCliente.getNombre());
-        jtfApellido.setText(consultaCliente.getApellidos());
-        jtfTelefono.setText(String.valueOf(consultaCliente.getTeléfono()));
-        jtfCP.setText(String.valueOf(consultaCliente.getCp()));
-        jtfUsuario.setText(consultaCliente.getUsuario());
-        jtfPass.setText(consultaCliente.getContraseña());
+
     }//GEN-LAST:event_jbConsultaActionPerformed
 
-    private void borrarCampos(){
+    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        String dni = jtfDNI.getText();
+        try {
+            gc = new Gestor_Cliente(con);
+            gc.borrarCliente(dni);
+            JOptionPane.showMessageDialog(null, "Cliente eliminado");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error BBDD");
+        }
+        borrarCampos();
+    }//GEN-LAST:event_jbBorrarActionPerformed
+
+    private void borrarCampos() {
         jtfDNI.setText("");
         jtfNombre.setText("");
         jtfApellido.setText("");
