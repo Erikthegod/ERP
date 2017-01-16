@@ -17,7 +17,6 @@ import java.sql.SQLException;
  */
 public class Gestor_Cliente {
 
-    Conexion con = new Conexion();
     Connection conexion;
 
     public Gestor_Cliente(Connection _con) throws Exception {
@@ -42,16 +41,24 @@ public class Gestor_Cliente {
     public void borrarCliente(String _dni) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "DELETE FROM CLIENTE WHERE DNI = "+_dni+"";
+        String sql = "DELETE FROM CLIENTE WHERE DNI = " + _dni + "";
         ps = conexion.prepareStatement(sql);
         modificaciones = ps.executeUpdate();
         System.out.println("Clientes borrados: " + modificaciones);
     }
 
-    public void modificarCliente(Cliente _cliente) throws SQLException {
+    public int modificarCliente(Cliente _cliente) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "UPDATE CLIENTE SET (?,?,?,?,?,?,?,?) WHERE DNI = "+_cliente.getDni()+"";
+        String sql = "UPDATE CLIENTE SET DNI=?"
+                + " ,NOMBRE=?"
+                + " ,APELLIDO=?"
+                + " ,TELEFONO=?"
+                + " ,CP=?"
+                + " ,PUNTOS=?"
+                + " ,USUARIO=?"
+                + " ,PASS=?"
+                + " WHERE DNI =?";
         ps = conexion.prepareStatement(sql);
         ps.setString(1, _cliente.getDni());
         ps.setString(2, _cliente.getNombre());
@@ -61,30 +68,23 @@ public class Gestor_Cliente {
         ps.setInt(6, _cliente.getPuntos());
         ps.setString(7, _cliente.getUsuario());
         ps.setString(8, _cliente.getContraseña());
+        ps.setString(9, _cliente.getDni());
         modificaciones = ps.executeUpdate();
         System.out.println("Clientes modificados= " + modificaciones);
+        return modificaciones;
     }
 
     public Cliente consultaCliente(String _dni) throws SQLException {
         PreparedStatement ps;
         ResultSet rs = null;
         Cliente nuevoCliente = null;
-        String sql = "SELECT * FROM CLIENTE WHERE DNI ="+_dni+"";
+        String sql = "SELECT * FROM CLIENTE WHERE DNI =" + _dni + "";
         ps = conexion.prepareStatement(sql);
         rs = ps.executeQuery();
         while (rs.next() == true) {
-            /*int id = rs.getInt(1);
-            int dni = rs.getInt(2);
-            String nombre = rs.getString(3);
-            String apellidos = rs.getString(4);
-            int telefono = rs.getInt(5);
-            int cp = rs.getInt(6);
-            int punto = rs.getInt(7);
-            String usuario = rs.getString(8);
-            String contraseña = rs.getString(9);*/
             //id,dni,nombre,apellidos,telefono,cp,punto,usuario,contraseña
-            nuevoCliente = new Cliente(rs.getInt(1),rs.getString(2),rs.getString(3),
-            rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getInt(7),rs.getString(8),rs.getString(9));
+            nuevoCliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3),
+                    rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9));
         }
         return nuevoCliente;
     }

@@ -15,7 +15,7 @@ public class Cliente {
     private String dni;
     private String nombre;
     private String apellidos;
-    private int teléfono;
+    private int telefono;
     private int cp;
     private int puntos;
     private String usuario;
@@ -25,7 +25,7 @@ public class Cliente {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.teléfono = teléfono;
+        this.telefono = teléfono;
         this.cp = cp;
         this.puntos = puntos;
         this.usuario = usuario;
@@ -37,7 +37,7 @@ public class Cliente {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.teléfono = teléfono;
+        this.telefono = teléfono;
         this.cp = cp;
         this.puntos = puntos;
         this.usuario = usuario;
@@ -71,11 +71,11 @@ public class Cliente {
     }
 
     public int getTeléfono() {
-        return teléfono;
+        return telefono;
     }
 
     public void setTeléfono(int teléfono) {
-        this.teléfono = teléfono;
+        this.telefono = teléfono;
     }
 
     public int getCp() {
