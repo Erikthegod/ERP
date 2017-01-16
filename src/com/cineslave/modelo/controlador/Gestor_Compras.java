@@ -7,12 +7,14 @@ package com.cineslave.modelo.controlador;
 
 import com.cineslave.modelo.Butaca;
 import com.cineslave.modelo.Cliente;
+import com.cineslave.modelo.Compra;
 import com.cineslave.modelo.Entrada;
 import com.cineslave.modelo.Pelicula;
 import com.cineslave.modelo.Proveedor;
 import com.cineslave.modelo.Sesion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -21,6 +23,7 @@ import java.sql.SQLException;
  */
 public class Gestor_Compras {
     Conexion con = new Conexion();
+    Compra compr;
     Connection conexion;
     Entrada entrada;
     Cliente cliente;
@@ -59,17 +62,16 @@ public class Gestor_Compras {
         ps.executeUpdate();
     }
     
-    public void consultarCompra(String nombreCli){
+    public Compra consultarCompra(String nombreCli) throws SQLException{
         PreparedStatement ps;
         ResultSet rs = null;
-        Cuerpo_Pedido nuevoPedido = null;
-        String sql = "SELECT * FROM PROVEEDORES WHERE CIF = " + _cif + "";
+        String sql = "select peliculas.nombre , sesion.hora , entrada.numColumna , entrada.numFila from peliculas , entrada ,sesion ,Res_Entr_Cli, Entra_Peli_Ses , cliente where cliente.nombre = '"+nombreCli+"' and cliente.idCliente= Res_Entr_Cli.idCliente and Res_Entr_Cli.idEntrada = Entra_Peli_Ses.idEntrada and Entra_Peli_Ses.idPelicula = peliculas.idPelicula and Entra_Peli_Ses.idSesion = Sesion.idSesion";
         ps = conexion.prepareStatement(sql);
         rs = ps.executeQuery();
         while (rs.next() == true) {
             //1 idProveedor//2 cif//3 nombre//4 telefono//5 poblacion//6 cp
-            nuevoProveedor = new Proveedor(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
+            compr = new Compra(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
         }
-        return nuevoProveedor;
+        return compr;
     }
 }
