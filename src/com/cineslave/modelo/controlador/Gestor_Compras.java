@@ -58,4 +58,18 @@ public class Gestor_Compras {
         ps.setInt(3, ses.getIdSesion());
         ps.executeUpdate();
     }
+    
+    public void consultarCompra(String nombreCli){
+        PreparedStatement ps;
+        ResultSet rs = null;
+        Cuerpo_Pedido nuevoPedido = null;
+        String sql = "SELECT * FROM PROVEEDORES WHERE CIF = " + _cif + "";
+        ps = conexion.prepareStatement(sql);
+        rs = ps.executeQuery();
+        while (rs.next() == true) {
+            //1 idProveedor//2 cif//3 nombre//4 telefono//5 poblacion//6 cp
+            nuevoProveedor = new Proveedor(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
+        }
+        return nuevoProveedor;
+    }
 }
