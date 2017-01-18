@@ -20,13 +20,14 @@ import java.sql.SQLException;
  * @author Erikthegod
  */
 public class Gestor_Compras {
-    Conexion con = new Conexion();
-    Connection conexion;
-    Entrada entrada;
-    Cliente cliente;
-    Pelicula pelicula;
-    Sesion sesion;
-    int idCompra;
+    
+    private Conexion con = new Conexion();
+    private Connection conexion;
+    private Entrada entrada;
+    private Cliente cliente;
+    private Pelicula pelicula;
+    private Sesion sesion;
+    private int idCompra;
 
     public Gestor_Compras() throws Exception {
         this.conexion = con.conectar();

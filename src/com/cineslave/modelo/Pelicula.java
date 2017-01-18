@@ -16,8 +16,7 @@ public class Pelicula {
     private int duracion;
     private int edad;
 
-    public Pelicula(int idPelicula, String nombre, int duracion, int edad) {
-        this.idPelicula = idPelicula;
+    public Pelicula(String nombre, int duracion, int edad) {
         this.nombre = nombre;
         this.duracion = duracion;
         this.edad = edad;

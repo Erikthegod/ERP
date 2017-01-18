@@ -68,7 +68,11 @@
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
+<<<<<<< HEAD
                       <Component id="jbCrearPedido" min="-2" max="-2" attributes="0"/>
+=======
+                      <Component id="jbCrear" min="-2" max="-2" attributes="0"/>
+>>>>>>> 42866e35e1c97f2af038eaac18353abc276dc858
                       <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -113,7 +117,11 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                   <Component id="jbCrearPedido" alignment="0" min="-2" max="-2" attributes="0"/>
+=======
+                  <Component id="jbCrear" alignment="0" min="-2" max="-2" attributes="0"/>
+>>>>>>> 42866e35e1c97f2af038eaac18353abc276dc858
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="jtfIVACabecera" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -174,10 +182,17 @@
         <Property name="text" type="java.lang.String" value="CREAR CABECERA DEL PEDIDO"/>
       </Properties>
     </Component>
+<<<<<<< HEAD
     <Component class="javax.swing.JButton" name="jbCrearPedido">
+=======
+    <Component class="javax.swing.JButton" name="jbCrear">
+>>>>>>> 42866e35e1c97f2af038eaac18353abc276dc858
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear Pedido"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCrearActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfFechaCabecera">
     </Component>

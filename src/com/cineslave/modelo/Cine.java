@@ -16,10 +16,9 @@ public class Cine {
     private String cif;
     private String direccion;
     private String poblacion;
-    private String cp;
+    private int cp;
 
-    public Cine(int idCine, String nombre, String cif, String direccion, String poblacion, String cp) {
-        this.idCine = idCine;
+    public Cine(String nombre, String cif, String direccion, String poblacion, int cp) {
         this.nombre = nombre;
         this.cif = cif;
         this.direccion = direccion;
@@ -67,11 +66,11 @@ public class Cine {
         this.poblacion = poblacion;
     }
 
-    public String getCp() {
+    public int getCp() {
         return cp;
     }
 
-    public void setCp(String cp) {
+    public void setCp(int cp) {
         this.cp = cp;
     }
     
