@@ -30,7 +30,7 @@ public class JPanelPedido extends javax.swing.JPanel {
         this.jfe = jfe;
         this.con = con;
         
-         cuerpoPedido = new DefaultTableModel();
+        cuerpoPedido = new DefaultTableModel();
         jTbPedido.setModel(cuerpoPedido);
         cuerpoPedido.addColumn("Código Producto");
         cuerpoPedido.addColumn("Descripción del Producto");
