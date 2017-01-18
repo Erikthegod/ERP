@@ -27,6 +27,8 @@ public class JFPrincipal extends javax.swing.JFrame {
     JPanelCliente panelCliente;
     JPanelProveedor panelProveedor;
     JPanelPedido panelPedidos;
+    JPanelPelicula panelPelicula;
+    JPanelSesion panelSesion;
 
     public JFPrincipal() throws Exception {
         initComponents();
@@ -43,6 +45,9 @@ public class JFPrincipal extends javax.swing.JFrame {
         panelCliente = new JPanelCliente(this, conTotal);
         panelProveedor = new JPanelProveedor(this, conTotal);
         panelPedidos = new JPanelPedido (this, conTotal);
+        panelPelicula = new JPanelPelicula (this, conTotal);
+        panelSesion = new JPanelSesion (this, conTotal);
+        
         
         this.getContentPane().add(panelCine, "pCine");
         this.getContentPane().add(panelInicioSesion, "pInicio");
@@ -50,6 +55,8 @@ public class JFPrincipal extends javax.swing.JFrame {
         this.getContentPane().add(panelCliente, "pCliente");
         this.getContentPane().add(panelProveedor, "pProveedor");
         this.getContentPane().add(panelPedidos, "pPedidos");
+        this.getContentPane().add(panelPelicula, "pPelicula");
+        this.getContentPane().add(panelSesion, "pSesion");
 
         setBounds(100, 100, 800, 800);
         setVisible(true);
@@ -134,9 +141,19 @@ public class JFPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu7);
 
         jMenu8.setText("Películas");
+        jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu8MousePressed(evt);
+            }
+        });
         jMenuBar1.add(jMenu8);
 
         jMenu9.setText("Sesiones");
+        jMenu9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenu9MousePressed(evt);
+            }
+        });
         jMenuBar1.add(jMenu9);
 
         jMenu10.setText("Entradas");
@@ -173,6 +190,14 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void jMenu6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MousePressed
         cambiaPanel("pPedidos");
     }//GEN-LAST:event_jMenu6MousePressed
+
+    private void jMenu8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MousePressed
+        cambiaPanel("pPelicula");
+    }//GEN-LAST:event_jMenu8MousePressed
+
+    private void jMenu9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu9MousePressed
+        cambiaPanel("pSesion");
+    }//GEN-LAST:event_jMenu9MousePressed
 
     /**
      * @param args the command line arguments

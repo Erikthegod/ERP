@@ -14,11 +14,14 @@ public class Sesion {
     private int idSesion;
     private int hora;
 
-    public Sesion(int idSesion, int hora) {
-        this.idSesion = idSesion;
-        this.hora = hora;
+    public Sesion(int hora, boolean confirmacion) {
+        if(confirmacion){//true cuando reciba la hora
+            this.hora = hora;
+        } else {//false cuando reciba la sesion
+            this.idSesion = hora;
+        }
     }
-
+    
     public int getIdSesion() {
         return idSesion;
     }
