@@ -39,7 +39,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }        
         panelInicioSesion = new JPanelInicioSesion(this);
-        panelCine = new JPanelCine(this);
+        panelCine = new JPanelCine(this, conTotal);
         panelCliente = new JPanelCliente(this, conTotal);
         panelProveedor = new JPanelProveedor(this, conTotal);
         panelPedidos = new JPanelPedido (this, conTotal);
