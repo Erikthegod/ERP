@@ -39,7 +39,7 @@ public class Cuerpo_Pedido {
         this.precio = _precio;
     }
 
-    public int getImporteTotalSinIva(){
+    public int getImporteSinIva(){
         return getPrecio()*getCtd();
     }
     
