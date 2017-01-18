@@ -50,7 +50,7 @@ public class JPanelPedido extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablePedido = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
@@ -74,7 +74,7 @@ public class JPanelPedido extends javax.swing.JPanel {
 
         jLabel5.setText("IVA");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -85,7 +85,7 @@ public class JPanelPedido extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTablePedido);
 
         jLabel6.setText("CUERPO DEL PEDIDO");
 
@@ -232,7 +232,7 @@ public class JPanelPedido extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablePedido;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
