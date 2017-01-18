@@ -5,9 +5,13 @@
  */
 package com.cineslave.gui;
 
+import com.cineslave.modelo.Cabecera_Pedido;
+import com.cineslave.modelo.Cuerpo_Pedido;
 import com.cineslave.modelo.controlador.Gestor_Cliente;
 import com.cineslave.modelo.controlador.Gestor_Pedidos;
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -39,7 +43,7 @@ public class JPanelPedido extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jbCrear = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -64,7 +68,12 @@ public class JPanelPedido extends javax.swing.JPanel {
 
         jLabel1.setText("CREAR CABECERA DEL PEDIDO");
 
-        jButton1.setText("Crear Pedido");
+        jbCrear.setText("Crear Pedido");
+        jbCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCrearActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Fecha");
 
@@ -143,7 +152,7 @@ public class JPanelPedido extends javax.swing.JPanel {
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(jbCrear)
                         .addGap(138, 138, 138))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(437, 437, 437)
@@ -173,7 +182,7 @@ public class JPanelPedido extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(jbCrear)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5)))
@@ -216,9 +225,23 @@ public class JPanelPedido extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCrearActionPerformed
+        Cabecera_Pedido _cabeceraP = new Cabecera_Pedido();
+        Cuerpo_Pedido _cuerpoP = new Cuerpo_Pedido();
+        try {
+            gp = new Gestor_Pedidos(con);
+            gp.realizarPedido(_cabeceraP, _cuerpoP);
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanelProveedor.class.getName()).log(Level.SEVERE, null, ex);
+            //altaProveedor
+        } catch (Exception ex) {
+            Logger.getLogger(JPanelProveedor.class.getName()).log(Level.SEVERE, null, ex);
+            //Gestor_proveedor(con)
+        }
+    }//GEN-LAST:event_jbCrearActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -241,5 +264,6 @@ public class JPanelPedido extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton jbCrear;
     // End of variables declaration//GEN-END:variables
 }

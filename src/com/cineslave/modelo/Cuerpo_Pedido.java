@@ -17,14 +17,6 @@ public class Cuerpo_Pedido {
     private int ctd;
     private int precio;
 
-    public Cuerpo_Pedido(int idPedido, int codProducto, String descripProducto, int ctd, int precio) {
-        this.idPedido = idPedido;
-        this.codProducto = codProducto;
-        this.descripProducto = descripProducto;
-        this.ctd = ctd;
-        this.precio = precio;
-    }
-
     /**
      * Constructor para realizar pedidos
      * @param _codProducto codigo del producto elegido

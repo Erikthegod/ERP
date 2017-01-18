@@ -25,25 +25,25 @@ public class Gestor_Pedidos {
         this.conexion = _con;
     }
 
-    public void realizarPedido(Cabecera_Pedido _cabecera_pedido, Cuerpo_Pedido _cuerpo_pedido) throws SQLException {
+    public void realizarPedido(Cabecera_Pedido _cabeceraP, Cuerpo_Pedido _cuerpoP) throws SQLException {
         PreparedStatement ps;
         //CABECERA
         //primero la cabecera por la FK del Cuerpo_Pedido
         String sql_cabecera = "INSERT INTO Cabecera_Pedido (fecha, importeTotalsiniva, importeTotalconiva, iva) VALUES (?,?,?,?)";
         ps = conexion.prepareStatement(sql_cabecera);
-        ps.setString(1, _cabecera_pedido.getFecha());
-        ps.setInt(2, _cabecera_pedido.getImporteTotalsinIva());
-        ps.setFloat(3, _cabecera_pedido.getIVA());
-        ps.setInt(4, _cabecera_pedido.getImporteTotalConIva());
+        ps.setString(1, _cabeceraP.getFecha());
+        ps.setInt(2, _cabeceraP.getImporteTotalsinIva());
+        ps.setFloat(3, _cabeceraP.getIVA());
+        ps.setInt(4, _cabeceraP.getImporteTotalConIva());
         ps.executeUpdate();
         
         //CUERPO
         String sql_cuerpo = "INSERT INTO Cuerpo_Pedido (codProducto, descripProducto, ctd, precio) VALUES (?,?,?,?)";
         ps = conexion.prepareStatement(sql_cuerpo);
-        ps.setInt(1, _cuerpo_pedido.getCodProducto());
-        ps.setString(2, _cuerpo_pedido.getDescripProducto());
-        ps.setInt(3, _cuerpo_pedido.getCtd());
-        ps.setInt(4, _cuerpo_pedido.getPrecio());
+        ps.setInt(1, _cuerpoP.getCodProducto());
+        ps.setString(2, _cuerpoP.getDescripProducto());
+        ps.setInt(3, _cuerpoP.getCtd());
+        ps.setInt(4, _cuerpoP.getPrecio());
         ps.executeUpdate();
         //los id deberian insertarse automaticamente
     }
@@ -80,7 +80,7 @@ public class Gestor_Pedidos {
         rs = ps.executeQuery();
         while (rs.next() == true) {
             //1 idProveedor//2 cif//3 nombre//4 telefono//5 poblacion//6 cp
-            caPedido = new Cabecera_Pedido(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4));
+            //caPedido = new Cabecera_Pedido(rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
         }
         return caPedido;
     }

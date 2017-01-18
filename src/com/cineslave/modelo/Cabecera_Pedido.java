@@ -22,7 +22,7 @@ public class Cabecera_Pedido {
     private Cuerpo_Pedido cp;
     private final Date myDate;
 
-    public Cabecera_Pedido(String fecha, int importeTotalsinIva, int iva, int importeTotalConIva) {
+    public Cabecera_Pedido() {
         this.fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate = new Date());
         this.importeTotalsinIva = cp.getImporteSinIva();
         this.IVA = 0.21f;
