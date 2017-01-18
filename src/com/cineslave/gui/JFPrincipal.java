@@ -27,8 +27,12 @@ public class JFPrincipal extends javax.swing.JFrame {
     JPanelCliente panelCliente;
     JPanelProveedor panelProveedor;
     JPanelPedido panelPedidos;
+<<<<<<< HEAD
     JPanelPelicula panelPelicula;
     JPanelSesion panelSesion;
+=======
+    JPanelProducto panelProductos;
+>>>>>>> origin/master
 
     public JFPrincipal() throws Exception {
         initComponents();
@@ -45,9 +49,13 @@ public class JFPrincipal extends javax.swing.JFrame {
         panelCliente = new JPanelCliente(this, conTotal);
         panelProveedor = new JPanelProveedor(this, conTotal);
         panelPedidos = new JPanelPedido (this, conTotal);
+<<<<<<< HEAD
         panelPelicula = new JPanelPelicula (this, conTotal);
         panelSesion = new JPanelSesion (this, conTotal);
         
+=======
+        panelProductos = new JPanelProducto(this, conTotal);
+>>>>>>> origin/master
         
         this.getContentPane().add(panelCine, "pCine");
         this.getContentPane().add(panelInicioSesion, "pInicio");
@@ -55,8 +63,12 @@ public class JFPrincipal extends javax.swing.JFrame {
         this.getContentPane().add(panelCliente, "pCliente");
         this.getContentPane().add(panelProveedor, "pProveedor");
         this.getContentPane().add(panelPedidos, "pPedidos");
+<<<<<<< HEAD
         this.getContentPane().add(panelPelicula, "pPelicula");
         this.getContentPane().add(panelSesion, "pSesion");
+=======
+        this.getContentPane().add(panelProductos, "pProductos");
+>>>>>>> origin/master
 
         setBounds(100, 100, 800, 800);
         setVisible(true);
@@ -127,6 +139,11 @@ public class JFPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Productos");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu5);
 
         jMenu6.setText("Pedidos");
@@ -191,6 +208,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         cambiaPanel("pPedidos");
     }//GEN-LAST:event_jMenu6MousePressed
 
+<<<<<<< HEAD
     private void jMenu8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MousePressed
         cambiaPanel("pPelicula");
     }//GEN-LAST:event_jMenu8MousePressed
@@ -198,6 +216,11 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void jMenu9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu9MousePressed
         cambiaPanel("pSesion");
     }//GEN-LAST:event_jMenu9MousePressed
+=======
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+        cambiaPanel("pProductos");
+    }//GEN-LAST:event_jMenu5MouseClicked
+>>>>>>> origin/master
 
     /**
      * @param args the command line arguments
