@@ -5,6 +5,7 @@
  */
 package com.cineslave.modelo.controlador;
 
+import com.cineslave.modelo.Pelicula;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,24 +23,22 @@ public class Gestor_Pelicula {
         this.conexion = con.conectar();
     }
 
-    public void altaProveedor(Proveedor _proveedor) throws SQLException {
+    public void crearPelicula(Pelicula _nuevaPeli) throws SQLException {
         PreparedStatement ps;
-        String sql = "INSERT INTO PROVEEDORES (cif, nombre, telefono,poblacion,cp) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO PELICULAS (nombre, duracion, edad) VALUES (?,?,?)";
         ps = conexion.prepareStatement(sql);
-        ps.setString(1, _proveedor.getCif());
-        ps.setString(2, _proveedor.getNombre());
-        ps.setInt(3, _proveedor.getTelefono());
-        ps.setString(4, _proveedor.getPoblacion());
-        ps.setInt(5, _proveedor.getCp());
+        ps.setString(1, _nuevaPeli.getNombre());
+        ps.setInt(2, _nuevaPeli.getDuracion());
+        ps.setInt(3, _nuevaPeli.getEdad());
         ps.executeUpdate();
     }
 
-    public void borrarProveedor(String _cif) throws SQLException {
+    public void borrarPelicula(String _nombre) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "DELETE FROM PROVEEDORES WHERE CIF = ?";
+        String sql = "DELETE FROM PELICULAS WHERE NOMBRE = ?";
         ps = conexion.prepareStatement(sql);
-        ps.setString(1, _cif);
+        ps.setString(1, _nombre);
         modificaciones = ps.executeUpdate();
         System.out.println("Proveedores borrados: " + modificaciones);
     }
@@ -50,32 +49,30 @@ public class Gestor_Pelicula {
      * @param _proveedor objeto para devolver valores
      * @throws SQLException
      */
-    public void modificarProveedor(Proveedor _proveedor) throws SQLException {
+    public void modificarPelicula(Pelicula _peli) throws SQLException {
         PreparedStatement ps;
         int modificaciones = 0;
-        String sql = "UPDATE PROVEEDORES SET cif=?, nombre=?, telefono=?, poblacion=?, cp=? WHERE CIF = ?";
+        String sql = "UPDATE PELICULAS SET nombre=?, duracion=?, edad=? WHERE NOMBRE = ?";
         ps = conexion.prepareStatement(sql);
-        ps.setString(6, _proveedor.getCif());
-        ps.setString(1, _proveedor.getCif());
-        ps.setString(2, _proveedor.getNombre());
-        ps.setInt(3, _proveedor.getTelefono());
-        ps.setString(4, _proveedor.getPoblacion());
-        ps.setInt(5, _proveedor.getCp());
+        ps.setString(4, _peli.getNombre());
+        ps.setString(1, _peli.getNombre());
+        ps.setInt(2, _peli.getDuracion());
+        ps.setInt(3, _peli.getEdad());
         modificaciones = ps.executeUpdate();
         System.out.println("Proveedores modificacdos: " + modificaciones);
     }
 
-    public Proveedor consultaProveedor(String _cif) throws SQLException {
+    public Pelicula consultarPelicula(String _nombre) throws SQLException {
         PreparedStatement ps;
         ResultSet rs = null;
-        Proveedor _nuevoProveedor = null;
-        String sql = "SELECT * FROM PROVEEDORES WHERE CIF = ?";
+        Pelicula _nuevoProveedor = null;
+        String sql = "SELECT * FROM PELICULAS WHERE NOMBRE = ?";
         ps = conexion.prepareStatement(sql);
-        ps.setString(1, _cif);
+        ps.setString(1, _nombre);
         rs = ps.executeQuery();
         while (rs.next() == true) {
             //1 id//2 cif//3 nombre//4 telefono//5 poblacion// 6 cp
-            _nuevoProveedor = new Proveedor(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6));
+            _nuevoProveedor = new Pelicula(rs.getString(2), rs.getInt(3), rs.getInt(4));
         }
         return _nuevoProveedor;
     }
